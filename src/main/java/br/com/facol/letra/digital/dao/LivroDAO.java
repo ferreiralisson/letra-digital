@@ -12,7 +12,7 @@ public class LivroDAO {
 
 	static {
 		Livro livro1 = new Livro(1, "Grande Sertão Veredas", "Drama", 560, "978-8535931983");
-		Livro livro2 = new Livro(1, "Dom Casmurro", "Drama", 560, "978-8594318602");
+		Livro livro2 = new Livro(2, "Dom Casmurro", "Drama", 560, "978-8594318602");
 
 		livros.add(livro1);
 		livros.add(livro2);
