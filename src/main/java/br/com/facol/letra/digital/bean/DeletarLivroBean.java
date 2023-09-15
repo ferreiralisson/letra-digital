@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.facol.letra.digital.controller.TipoAcao;
 import br.com.facol.letra.digital.dao.LivroDAO;
 
-public class DeletarLivroServiceBean implements TipoAcao {
+public class DeletarLivroBean implements TipoAcao {
 
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
 
-	public DeletarLivroServiceBean(HttpServletRequest req, HttpServletResponse resp) {
+	public DeletarLivroBean(HttpServletRequest req, HttpServletResponse resp) {
 		super();
 		this.req = req;
 		this.resp = resp;
