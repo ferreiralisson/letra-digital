@@ -23,8 +23,8 @@
 		<c:forEach items="${livros}" var="livro">
 			<li>
 				${livro.titulo}
-				<a href="">editar</a>
-				<a href="">remover</a>
+				<a href="${listarLivros}&id=${livro.id}">editar</a>
+				<a href="${deletarLivro}&id=${livro.id}">remover</a>
 			</li>
 		</c:forEach>
 
