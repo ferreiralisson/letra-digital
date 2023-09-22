@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns = "/livros")
 public class LivrosController extends HttpServlet {
@@ -18,6 +19,15 @@ public class LivrosController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter("acao");
+
+		HttpSession session = req.getSession();
+		boolean isLogado = session.getAttribute("usuarioLogado") == null;
+		boolean isProtected = !(action.equalsIgnoreCase("Login") || action.equalsIgnoreCase("formLogin"));
+
+		if (isLogado && isProtected) {
+			resp.sendRedirect("livros?acao=formLogin");
+			return;
+		}
 
 		String fqn = "br.com.facol.letra.digital.bean." + Character.toUpperCase(action.charAt(0)) + action.substring(1)
 				+ "Bean";
