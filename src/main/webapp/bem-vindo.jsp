@@ -6,6 +6,8 @@
 <html>
 <body>
 
+	<c:import url="logout.jsp" />
+
 	<h1>Bem vindo ao letra digital</h1>
 
 
