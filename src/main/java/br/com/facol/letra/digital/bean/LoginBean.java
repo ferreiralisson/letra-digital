@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.facol.letra.digital.controller.TipoAcao;
-import br.com.facol.letra.digital.dao.LivroDAO;
+import br.com.facol.letra.digital.dao.UsuarioDAO;
 import br.com.facol.letra.digital.model.Usuario;
 
 public class LoginBean implements TipoAcao {
@@ -27,9 +27,8 @@ public class LoginBean implements TipoAcao {
 		String login = this.req.getParameter("login");
 		String senha = this.req.getParameter("senha");
 
-		LivroDAO dao = new LivroDAO();
+		UsuarioDAO dao = new UsuarioDAO();
 		Usuario usuario = dao.existeUsuario(login, senha);
-		
 
 		if (usuario != null) {
 			HttpSession session = this.req.getSession();
@@ -38,7 +37,6 @@ public class LoginBean implements TipoAcao {
 		} else {
 			this.resp.sendRedirect("livros?acao=formLogin");
 		}
-		
 
 	}
 

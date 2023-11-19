@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.facol.letra.digital.controller.TipoAcao;
-import br.com.facol.letra.digital.dao.LivroDAO;
+import br.com.facol.letra.digital.dao.DAO;
 import br.com.facol.letra.digital.model.Livro;
 
 public class NovoLivroBean implements TipoAcao {
@@ -26,8 +26,7 @@ public class NovoLivroBean implements TipoAcao {
 		String genero = this.req.getParameter("genero");
 
 		Livro livro = new Livro(titulo, genero);
-		LivroDAO db = new LivroDAO();
-		db.novoLivro(livro);
+		new DAO<Livro>(Livro.class).adiciona(livro);
 
 		// chamo o jsp
 		this.resp.sendRedirect("livros?acao=listarLivros");
