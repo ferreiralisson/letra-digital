@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.facol.letra.digital.controller.TipoAcao;
-import br.com.facol.letra.digital.dao.LivroDAO;
+import br.com.facol.letra.digital.dao.DAO;
 import br.com.facol.letra.digital.model.Livro;
 
 public class AtualizarLivroBean implements TipoAcao {
@@ -27,11 +27,10 @@ public class AtualizarLivroBean implements TipoAcao {
 		String paramId = this.req.getParameter("id");
 
 		Integer idLivro = Integer.valueOf(paramId);
-		LivroDAO db = new LivroDAO();
 
 		Livro livro;
 		try {
-			livro = db.buscarLivroPorId(idLivro);
+			livro = new DAO<Livro>(Livro.class).buscaPorId(idLivro);
 			if (livro.getId() != null) {
 				livro.setTitulo(titulo);
 				livro.setGenero(genero);

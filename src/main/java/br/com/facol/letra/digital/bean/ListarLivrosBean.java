@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.facol.letra.digital.controller.TipoAcao;
-import br.com.facol.letra.digital.dao.LivroDAO;
+import br.com.facol.letra.digital.dao.DAO;
 import br.com.facol.letra.digital.model.Livro;
 
 public class ListarLivrosBean implements TipoAcao {
@@ -24,8 +24,8 @@ public class ListarLivrosBean implements TipoAcao {
 	}
 
 	public void execute() throws ServletException, IOException {
-		LivroDAO db = new LivroDAO();
-		List<Livro> livros = db.listarLivros();
+
+		List<Livro> livros = new DAO<Livro>(Livro.class).listaTodos();
 		this.req.setAttribute("livros", livros);
 
 		RequestDispatcher dispatcher = this.req.getRequestDispatcher("/listarLivros.jsp");

@@ -1,7 +1,17 @@
 package br.com.facol.letra.digital.model;
 
-public class Livro {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Livro implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String titulo;
 	private String genero;
@@ -15,6 +25,13 @@ public class Livro {
 		this.genero = genero;
 		this.quantidadePaginas = quantidadePaginas;
 		this.isbn = isbn;
+	}
+	
+	public Livro(String isbn, String titulo, String genero, Integer quantidadePaginas) {
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.genero = genero;
+		this.quantidadePaginas = quantidadePaginas;
 	}
 
 	public Livro(String titulo, String genero) {
